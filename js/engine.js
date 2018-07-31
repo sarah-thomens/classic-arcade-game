@@ -94,7 +94,7 @@ var Engine = ( function( global )
                                       {
                                         enemy.update( dt );
                                       } );
-                  //  player.update();
+                  player.update( dt );
                 }
 
                 /*============================================================================================
@@ -152,7 +152,7 @@ var Engine = ( function( global )
                                         enemy.render( );
                                       } );
 
-                  //player.render();
+                  player.render();
                 }
 
                 /*============================================================================================
@@ -174,7 +174,8 @@ var Engine = ( function( global )
                      'images/water-block.png',
                      'images/grass-block.png',
                      'images/enemy-bug.png',
-                     'images/char-boy.png'
+                     'images/char-boy.png',
+                     'images/char-horn-girl.png'
                    ] );
                  Resources.onReady( init );
 
