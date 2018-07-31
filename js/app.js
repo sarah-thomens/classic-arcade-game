@@ -35,6 +35,12 @@ class Enemy
       //==reset the location on the left side of the screen===================================================
       this.x = -100;
     }
+
+    if( this.x >= (player.x - 75) && this.x <= (player.x + 75 ) && this.y >= (player.y - 75) && this.y<=(player.y +75))
+    {
+      console.log("Collision!!");
+      player.resetPlayer( );
+    }
   }
 
   /*==========================================================================================================
@@ -61,6 +67,8 @@ class Player
 
      this.x = x;                                  // Player start x position
      this.y = y;                                  // Player start y position
+     this.resetX = x;                             // Player reset x position
+     this.resetY = y;                             // Player reset y position
      this.targetX = x;                            // Target location x position
      this.targetY = y;                            // Target location y position
    }
@@ -72,11 +80,8 @@ class Player
     ========================================================================================================*/
    update( dt )
    {
-     let speed = 100;       // Setting a speed for the player
+     let speed = 300;       // Setting a speed for the player
 
-     //==If the player's x or y values are not the same as the target location x or y values...===============
-     if( this.x != this.targetX || this.y != this.targetY )
-     {
        //==If the player's x value is less than the target location x value...================================
        if( this.x < this.targetX )
        {
@@ -114,7 +119,6 @@ class Player
          //==...move the player up============================================================================
          this.y -= speed * dt;
        }
-     }
    }
 
    /*=========================================================================================================
@@ -128,19 +132,36 @@ class Player
       switch( allowedKeys )
       {
         case 'left':
-          this.targetX -= 100;
+          if( this.targetX > 0 ) this.targetX -= 100;
           break;
         case 'up':
-          this.targetY -= 100;
+          if( this.targetY > 0 ) this.targetY -= 85;
           break;
         case 'right':
-          this.targetX += 100;
+          if( this.targetX < 400 ) this.targetX += 100;
           break;
         case 'down':
-          this.targetY += 100;
+          if( this.targetY < 400 ) this.targetY += 85;
           break;
       }
     }
+
+  /*=========================================================================================================
+   * resetPlayer Function
+   *
+   * Resets the player to it's starting position.
+   =========================================================================================================*/
+     resetPlayer( )
+     {
+       this.x = this.resetX;
+       this.y = this.resetY;
+
+       this.targetX = this.resetX;
+       this.targetY = this.resetY;
+
+       console.log( "X = " + this.x );
+       console.log( "Y = " + this.y );
+     }
 
    /*=========================================================================================================
     * render Function
