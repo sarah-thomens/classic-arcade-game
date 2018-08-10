@@ -62,9 +62,10 @@ class Enemy
 ============================================================================================================*/
 class Player
 {
-	constructor( x, y )
+	constructor( x, y, modal )
 	{
 		this.sprite = 'images/char-horn-girl.png';   // Image/sprite for player
+		this.modal = modal;													// Reference to modal
 
 		this.x = x;                                  // Player start x position
 		this.y = y;                                  // Player start y position
@@ -120,6 +121,12 @@ class Player
 			//==...move the player up===============================================================================
 			this.y -= speed * dt;
 		}
+
+		//==If the player reaches the water...====================================================================
+		if( this.y <= 0 )
+		{
+			this.modal.style.display = 'block';
+		}
 	}
 
 	/*==========================================================================================================
@@ -159,6 +166,8 @@ class Player
 
 		this.targetX = this.resetX;
 		this.targetY = this.resetY;
+
+		modal.style.display = 'none';
 	}
 
 	/*==========================================================================================================
@@ -172,6 +181,8 @@ class Player
 	}
 }
 
+let modal = document.querySelector('.modal');		// selecting the modal from the DOM
+let newGameButton = document.querySelector('.new-game-button');  // selecting the new game button from DOM
 
 //==Instantiating enemy objects===============================================================================
 let e1 = new Enemy( -100, 140, 100 );
@@ -182,9 +193,15 @@ let e3 = new Enemy( -150, 230, 300 );
 let allEnemies = [e1, e2, e3];
 
 //==Instantiating a player opject=============================================================================
-let player = new Player( 200, 400 );
+let player = new Player( 200, 400, modal );
 
+//==Restarting the game=======================================================================================
+function resetGame( )
+{
+	player.resetPlayer( );
+}
 
+newGameButton.addEventListener( 'click', resetGame );  // an event listener to restart the game
 //==Listens for key presses and sends keys to Player.handleInput(). You don't need to modify this.============
 document.addEventListener( 'keyup', function( e )
 {
