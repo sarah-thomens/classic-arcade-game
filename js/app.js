@@ -1,8 +1,8 @@
 /*============================================================================================================
- * Enemy Class
- *
- * This is the enemy class that our player class will need to avoid in the game.
- ===========================================================================================================*/
+* Enemy Class
+*
+* This is the enemy class that our player class will need to avoid in the game.
+============================================================================================================*/
 class Enemy
 {
 	constructor( x, y, speed )
@@ -16,11 +16,11 @@ class Enemy
 	}
 
 	/*==========================================================================================================
-   * update Function (for Enemies)
-   *
-   * Updates the enemy's position on the screen.
-   * Parameter: dt, a time delta between ticks
-   =========================================================================================================*/
+  * update Function (for Enemies)
+  *
+  * Updates the enemy's position on the screen.
+  * Parameter: dt, a time delta between ticks
+  ==========================================================================================================*/
 	update( dt )
 	{
 		//==If the enemy is still on screen...====================================================================
@@ -45,10 +45,10 @@ class Enemy
 	}
 
 	/*==========================================================================================================
-   * render Function (for Enemies)
-   *
-   * Draws the enemy on the screen.
-   =========================================================================================================*/
+  * render Function (for Enemies)
+  *
+  * Draws the enemy on the screen.
+  ==========================================================================================================*/
 	render( )
 	{
 		ctx.drawImage( Resources.get( this.sprite ), this.x, this.y );
@@ -56,10 +56,10 @@ class Enemy
 }
 
 /*============================================================================================================
- * Player Class
- *
- * This class requires an update(), render() and a handleInput() method.
- ===========================================================================================================*/
+* Player Class
+*
+* This class requires an update(), render() and a handleInput() method.
+============================================================================================================*/
 class Player
 {
 	constructor( x, y )
@@ -74,59 +74,59 @@ class Player
 		this.targetY = y;                            // Target location y position
 	}
 
-	/*=========================================================================================================
-    * update Function
-    *
-    * Updates the player's position on the screen.
-    ========================================================================================================*/
+	/*==========================================================================================================
+  * update Function
+  *
+  * Updates the player's position on the screen.
+  ==========================================================================================================*/
 	update( dt )
 	{
 		let speed = 300;       // Setting a speed for the player
 
-		//==If the player's x value is less than the target location x value...================================
+		//==If the player's x value is less than the target location x value...===================================
 		if( this.x < this.targetX )
 		{
-			//==...move the player to the right==================================================================
+			//==...move the player to the right=====================================================================
 			this.x += speed * dt;
 
-			//==If the player's x value is within range of the target location's x value...======================
+			//==If the player's x value is within range of the target location's x value...=========================
 			if( this.x >= (this.targetX - 1 ) )
 			{
-				//==...set the player's x to the target location's x value to move out of the loop=================
+				//==...set the player's x to the target location's x value to move out of the loop====================
 				this.x = this.targetX;
 			}
 		}
-		//==If the player's x value is greater than the target location x value...=============================
+		//==If the player's x value is greater than the target location x value...================================
 		else if( this.x > this.targetX )
 		{
-			//==...move the player to the left===================================================================
+			//==...move the player to the left======================================================================
 			this.x -= speed * dt;
 		}
-		//==If the player's y value is less than the target location y value...================================
+		//==If the player's y value is less than the target location y value...===================================
 		else if( this.y < this.targetY )
 		{
-			//==...move the player down==========================================================================
+			//==...move the player down=============================================================================
 			this.y += speed * dt;
-			//==If the player's y value is within range of the target location's y value...======================
+			//==If the player's y value is within range of the target location's y value...=========================
 			if( this.y >= (this.targetY - 1) )
 			{
-				//==...set the player's y to the target location's y value to move out of the loop=================
+				//==...set the player's y to the target location's y value to move out of the loop====================
 				this.y = this.targetY;
 			}
 		}
-		//==If the player's y value is greater than the target location y value...=============================
+		//==If the player's y value is greater than the target location y value...================================
 		else if( this.y > this.targetY )
 		{
-			//==...move the player up============================================================================
+			//==...move the player up===============================================================================
 			this.y -= speed * dt;
 		}
 	}
 
-	/*=========================================================================================================
-    * handleInput Function
-    *
-    * Takes the input from the user and determines what direction and where the player should go.
-    ========================================================================================================*/
+	/*==========================================================================================================
+  * handleInput Function
+  *
+  * Takes the input from the user and determines what direction and where the player should go.
+  ==========================================================================================================*/
 	handleInput( allowedKeys )
 	{
 		//==Determine what the player input is and move the target x or y values accordingly====================
@@ -148,10 +148,10 @@ class Player
 	}
 
 	/*==========================================================================================================
-   * resetPlayer Function
-   *
-   * Resets the player to it's starting position.
-   =========================================================================================================*/
+  * resetPlayer Function
+  *
+  * Resets the player to it's starting position.
+  ==========================================================================================================*/
 	resetPlayer( )
 	{
 		this.x = this.resetX;
