@@ -161,29 +161,11 @@ class Player
 		this.targetY = this.resetY;
 	}
 
-	/*=========================================================================================================
-    * playerHurt Function
-    *
-    * Changes player's look to a heart and back when hurt by enemy.
-    ========================================================================================================*/
-	playerHurt( )
-	{
-		if( this.sprite === 'images/char-horn-girl.png')
-		{
-			this.sprite = 'images/Heart.png';
-		}
-		else
-		{
-			this.sprite = 'images/char-horn-girl.png';
-		}
-		console.log( 'In PlayerHurt.');
-	}
-
-	/*=========================================================================================================
-    * render Function
-    *
-    * Draws the player on the screen.
-    ========================================================================================================*/
+	/*==========================================================================================================
+  * render Function
+  *
+  * Draws the player on the screen.
+  ==========================================================================================================*/
 	render( )
 	{
 		ctx.drawImage( Resources.get( this.sprite ), this.x, this.y );
@@ -191,13 +173,15 @@ class Player
 }
 
 
-// Now instantiate your objects.
+//==Instantiating enemy objects===============================================================================
 let e1 = new Enemy( -100, 140, 100 );
 let e2 = new Enemy( -200, 60, 500 );
 let e3 = new Enemy( -150, 230, 300 );
-// Place all enemy objects in an array called allEnemies
+
+//==Placing all enemy objects in an array called allEnemies===================================================
 let allEnemies = [e1, e2, e3];
-// Place the player object in a variable called player
+
+//==Instantiating a player opject=============================================================================
 let player = new Player( 200, 400 );
 
 
@@ -205,12 +189,12 @@ let player = new Player( 200, 400 );
 document.addEventListener( 'keyup', function( e )
 {
 	var allowedKeys =
-                                      {
-                                      	37: 'left',
-                                      	38: 'up',
-                                      	39: 'right',
-                                      	40: 'down'
-                                      };
+  {
+  	37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down'
+  };
 
 	player.handleInput( allowedKeys[e.keyCode] );
 });
