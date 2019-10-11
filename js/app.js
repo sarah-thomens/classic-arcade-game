@@ -181,8 +181,8 @@ class Player
 	}
 }
 
-let modal = document.querySelector('.modal');		// selecting the modal from the DOM
-let newGameButton = document.querySelector('.new-game-button');  // selecting the new game button from DOM
+const modal = document.querySelector('.modal');		// selecting the modal from the DOM
+const newGameButton = document.querySelector('.new-game-button');  // selecting the new game button from DOM
 
 //==Instantiating enemy objects===============================================================================
 let e1 = new Enemy( -100, 140, 100 );
